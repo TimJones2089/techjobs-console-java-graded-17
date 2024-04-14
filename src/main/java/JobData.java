@@ -93,9 +93,12 @@ public class JobData {
 
         // TODO - implement this method
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-
+        ArrayList<HashMap<String, String>> noDuplicates = new ArrayList<>();
         String aValue;
 
+
+//        Iterate through the arrayList and Hashmap to compare the searchTerm against the value in allJobs
+//        and if it matches the searchTerm add it to the jobs arrayList.
 
         for (int i = 0; i < allJobs.size(); i++){
             for (Map.Entry<String, String> row : allJobs.get(i).entrySet()) {
@@ -106,12 +109,18 @@ public class JobData {
             }
         }
 
+//        Iterate through the jobs arrayList and compare if the value is in the noDuplicates arrayList,
+//        if it is not then we're adding it to the noDuplicates arrayList to remove duplicates.
+
+        for (int i = 0; i < jobs.size(); i++) {
+            if (!noDuplicates.contains(jobs.get(i))) {
+                noDuplicates.add(jobs.get(i));
+            }
+        }
 
 
 
-
-
-        return jobs;
+        return noDuplicates;
 
     }
 
